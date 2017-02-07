@@ -7,3 +7,10 @@ that is a database for movies
 
 * Do an ERD for the database
 * Connect a database to a webpage
+
+##WEEK 2 OBJECTIVES
+
+*Load table from Excel to SQL
+*Create query on .NET + Store Procedure
+*Curseur in Store Procedures
+*Load Everythin on the web
