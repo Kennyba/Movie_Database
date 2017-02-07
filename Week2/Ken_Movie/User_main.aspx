@@ -13,11 +13,11 @@
         <div id="menu">
             <ul>
 
-                <li><a>Profile</a></li>
-                <li><a>Movies</a></li>
-                <li><a>Actors</a></li>
-                <li><a>Directors</a></li>
-                <li><a>About KenMovie</a></li>
+                <li><a href="User_main.aspx">Profile</a></li>
+                <li><a href="List_Movie.aspx">Movies</a></li>
+                <li><a href="List_Actors.aspx">Actors</a></li>
+                <li><a href="List_Directors.aspx">Directors</a></li>
+                <li><a href="Info_KenMovie.aspx">Info KenMovie</a></li>
 
             </ul>
         </div>
