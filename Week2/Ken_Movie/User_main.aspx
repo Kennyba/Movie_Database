@@ -24,7 +24,7 @@
 
         <div class="profile_info">
             
-            <asp:Image runat="server" ImageUrl="~/Images/Movie/No_Image_Profile.jpg" ID="profile_pic"></asp:Image>
+            <asp:Image runat="server" ImageUrl="~/Images/User/No_Image_Profile.jpg" ID="profile_pic"></asp:Image>
             
             <ul id="user_info">
 
