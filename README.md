@@ -10,7 +10,7 @@ that is a database for movies
 
 ##WEEK 2 OBJECTIVES
 
-*Load table from Excel to SQL
-*Create query on .NET + Store Procedure
-*Curseur in Store Procedures
-*Load Everythin on the web
+* Load table from Excel to SQL
+* Create query on .NET + Store Procedure
+* Curseur in Store Procedures
+* Load Everythin on the web
