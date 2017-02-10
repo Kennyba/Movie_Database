@@ -10,6 +10,19 @@
     <form id="form1" runat="server">
     <div>
 
+        <div id="option_user">
+            <asp:DropDownList ID="DropDownList_User" runat="server">
+                <asp:ListItem>Ken</asp:ListItem>
+                <asp:ListItem>bob4eva</asp:ListItem>
+                <asp:ListItem>MeltingCh33se</asp:ListItem>
+                <asp:ListItem>Collier</asp:ListItem>
+                <asp:ListItem>DaFighter</asp:ListItem>
+            </asp:DropDownList>
+
+            <asp:Button ID="User_change" runat="server" Text="Change User" />
+
+        </div>
+
         <div id="menu">
             <ul>
 
@@ -24,15 +37,14 @@
 
         <div class="profile_info">
             
-            <asp:Image runat="server" ImageUrl="~/Images/User/No_Image_Profile.jpg" ID="profile_pic"></asp:Image>
-            
-            <ul id="user_info">
+            <asp:Image runat="server"  ID="profile_pic"></asp:Image>
 
-                <li id="Name"></li>
-                <li id="Sex"></li>
-                <li id="Date_of_birth"></li>
-
-            </ul>
+            <asp:BulletedList ID="Profile_Info" runat="server">
+                <asp:ListItem></asp:ListItem>
+                <asp:ListItem></asp:ListItem>
+                <asp:ListItem></asp:ListItem>
+            </asp:BulletedList>
+ 
             
             <asp:Button ID="Button_Friend_List" runat="server" Text="List of Friends" />
 
