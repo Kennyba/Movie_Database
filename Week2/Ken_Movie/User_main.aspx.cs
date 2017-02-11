@@ -35,7 +35,7 @@ public partial class User_main : System.Web.UI.Page
                     Profile_Info.Items[0].Text = "Name: " + rdr["First_Name"] + " " + rdr["Last_Name"];
                     Profile_Info.Items[1].Text = "Sex: " + rdr["Sex"];
                     Profile_Info.Items[2].Text = "Date of Birth: " + rdr["Date_Birth"];
-                    //profile_pic.ImageUrl=""
+                    profile_pic.ImageUrl = "~/Images/User/" + rdr["First_Name"] + "_" + rdr["Last_Name"] + ".jpg";
 
                 }
 
@@ -44,9 +44,8 @@ public partial class User_main : System.Web.UI.Page
 
         }
 
-
-
-
     }
+
+
 
 }
