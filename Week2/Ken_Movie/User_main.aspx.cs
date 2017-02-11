@@ -11,6 +11,7 @@ public partial class User_main : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Get_user_ID();
         Personal_Data();
 
     }
@@ -18,26 +19,40 @@ public partial class User_main : System.Web.UI.Page
     private int Get_user_ID()
     {
         int User_id;
-        string username = "Ken";
+        string username = "DaFighter";
         string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
 
+        using (SqlConnection con = new SqlConnection(CS))
+        {
+            SqlCommand cmd = new SqlCommand("Get_Client_ID", con);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@username", username);
 
+            SqlParameter outParam = new SqlParameter();
+            outParam.ParameterName = "@user_id";
+            outParam.SqlDbType = System.Data.SqlDbType.Int;
+            outParam.Direction = System.Data.ParameterDirection.Output;
+            cmd.Parameters.Add(outParam);
 
+            con.Open();
+            cmd.ExecuteNonQuery();
+
+            User_id =(int)outParam.Value;
+         }
 
         return User_id;
-
     }
 
     private void Personal_Data() {
 
-        string username ="Ken";
+        int user_ID =1;
         string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
 
         using (SqlConnection con = new SqlConnection(CS))
         {
             SqlCommand cmd = new SqlCommand("Personal_info", con);
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@username_input", username);
+            cmd.Parameters.AddWithValue("@user_ID_input", user_ID);
 
             con.Open();
             using (SqlDataReader rdr = cmd.ExecuteReader())
