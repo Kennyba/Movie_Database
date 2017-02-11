@@ -15,10 +15,23 @@ public partial class User_main : System.Web.UI.Page
 
     }
 
+    private int Get_user_ID()
+    {
+        int User_id;
+        string username = "Ken";
+        string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
+
+
+
+
+        return User_id;
+
+    }
+
     private void Personal_Data() {
 
-        String username ="Ken";
-        String CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
+        string username ="Ken";
+        string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
 
         using (SqlConnection con = new SqlConnection(CS))
         {
