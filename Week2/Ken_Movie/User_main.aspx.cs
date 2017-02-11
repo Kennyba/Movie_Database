@@ -19,7 +19,7 @@ public partial class User_main : System.Web.UI.Page
     private int Get_user_ID()
     {
         int User_id;
-        string username = "DaFighter";
+        string username = "Ken";
         string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
 
         using (SqlConnection con = new SqlConnection(CS))
@@ -63,7 +63,18 @@ public partial class User_main : System.Web.UI.Page
                     Profile_Info.Items[0].Text = "Name: " + rdr["First_Name"] + " " + rdr["Last_Name"];
                     Profile_Info.Items[1].Text = "Sex: " + rdr["Sex"];
                     Profile_Info.Items[2].Text = "Date of Birth: " + rdr["Date_Birth"];
-                    profile_pic.ImageUrl = "~/Images/User/" + rdr["First_Name"] + "_" + rdr["Last_Name"] + ".jpg";
+
+                    if (System.IO.File.Exists("~/Images/User/" + rdr["First_Name"] + "_" + rdr["Last_Name"] + ".jpg"))
+                    {
+                        profile_pic.ImageUrl = "~/Images/User/" + rdr["First_Name"] + "_" + rdr["Last_Name"] + ".jpg";
+                    }
+                    else
+                    {
+                        profile_pic.ImageUrl = "~/Images/User/No_Image_Profile.jpg";
+
+                    }
+                    
+                               
 
                 }
 
