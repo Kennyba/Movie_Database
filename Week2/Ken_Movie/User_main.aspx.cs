@@ -14,11 +14,17 @@ public partial class User_main : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Personal_Data();
+        Genre_User_liked();
+        Actor_User_liked();
+        Director_User_liked();
     }
 
     protected void User_change_Click(object sender, EventArgs e)
     {
         Personal_Data();
+        Genre_User_liked();
+        Actor_User_liked();
+        Director_User_liked();
     }
 
     private int Get_user_ID()
@@ -79,6 +85,87 @@ public partial class User_main : System.Web.UI.Page
 
                     }
                 }
+            }
+        }
+    }
+
+    private void Genre_User_liked()
+    {
+        int user_ID = Get_user_ID();
+        string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
+
+        BulletedList_GenreLiked.Items.Clear();
+
+        using (SqlConnection con = new SqlConnection(CS))
+        {
+            SqlCommand cmd = new SqlCommand("Genre_Liked_user", con);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@user_id", user_ID);
+
+            con.Open();
+            using (SqlDataReader rdr = cmd.ExecuteReader())
+            {
+                while(rdr.Read())
+                {
+                    ListItem li = new ListItem();
+                    li.Text = (string)rdr["genre"];
+                    BulletedList_GenreLiked.Items.Add(li);
+                }
+           
+            }
+        }
+    }
+
+    private void Actor_User_liked()
+    {
+        int user_ID = Get_user_ID();
+        string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
+
+        BulletedList_ActorLiked.Items.Clear();
+
+        using (SqlConnection con = new SqlConnection(CS))
+        {
+            SqlCommand cmd = new SqlCommand("Actor_Liked_user", con);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@user_id", user_ID);
+
+            con.Open();
+            using (SqlDataReader rdr = cmd.ExecuteReader())
+            {
+                while (rdr.Read())
+                {
+                    ListItem li = new ListItem();
+                    li.Text = rdr["First_Name"]+" "+rdr["Last_Name"];
+                    BulletedList_ActorLiked.Items.Add(li);
+                }
+
+            }
+        }
+    }
+
+    private void Director_User_liked()
+    {
+        int user_ID = Get_user_ID();
+        string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
+
+        BulletedList_DirectorLiked.Items.Clear();
+
+        using (SqlConnection con = new SqlConnection(CS))
+        {
+            SqlCommand cmd = new SqlCommand("Director_Liked_user", con);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@user_id", user_ID);
+
+            con.Open();
+            using (SqlDataReader rdr = cmd.ExecuteReader())
+            {
+                while (rdr.Read())
+                {
+                    ListItem li = new ListItem();
+                    li.Text = rdr["First_Name"] + " " + rdr["Last_Name"];
+                    BulletedList_DirectorLiked.Items.Add(li);
+                }
+
             }
         }
     }

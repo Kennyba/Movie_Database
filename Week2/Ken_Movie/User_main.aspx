@@ -52,25 +52,28 @@
 
         <div class="Liked_element">
             <p>Genre Liked</p>
-            <ul class="Liked_list" id="genre">
-
-            </ul>
+            
+            <asp:BulletedList ID="BulletedList_GenreLiked" runat="server">
+            </asp:BulletedList>
+         
             <asp:Button ID="Button_Genre" runat="server" Text="Modify" />
         </div>
         
        <div class="Liked_element" >
             <p>Actor Liked</p>
-            <ul class="Liked" id="actor">
+            
+           <asp:BulletedList ID="BulletedList_ActorLiked" runat="server">
+           </asp:BulletedList>
 
-            </ul>
             <asp:Button ID="Button_Actor" runat="server" Text="Modify" />
        </div>
         
        <div class="Liked_element">
             <p>Director Liked</p>
-            <ul class="Liked" id="director">
-
-            </ul>
+            
+            <asp:BulletedList ID="BulletedList_DirectorLiked" runat="server">
+            </asp:BulletedList>
+            
            <asp:Button ID="Button_Director" runat="server" Text="Modify" />
        </div>
 
