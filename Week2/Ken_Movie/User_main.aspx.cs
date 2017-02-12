@@ -6,20 +6,25 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.IO;
 
 public partial class User_main : System.Web.UI.Page
 {
+    
     protected void Page_Load(object sender, EventArgs e)
     {
-        Get_user_ID();
         Personal_Data();
+    }
 
+    protected void User_change_Click(object sender, EventArgs e)
+    {
+        Personal_Data();
     }
 
     private int Get_user_ID()
     {
         int User_id;
-        string username = "Ken";
+        string username = DropDownList_User.SelectedValue;
         string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
 
         using (SqlConnection con = new SqlConnection(CS))
@@ -45,7 +50,7 @@ public partial class User_main : System.Web.UI.Page
 
     private void Personal_Data() {
 
-        int user_ID =1;
+        int user_ID = Get_user_ID();
         string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
 
         using (SqlConnection con = new SqlConnection(CS))
@@ -64,7 +69,7 @@ public partial class User_main : System.Web.UI.Page
                     Profile_Info.Items[1].Text = "Sex: " + rdr["Sex"];
                     Profile_Info.Items[2].Text = "Date of Birth: " + rdr["Date_Birth"];
 
-                    if (System.IO.File.Exists("~/Images/User/" + rdr["First_Name"] + "_" + rdr["Last_Name"] + ".jpg"))
+                    if (File.Exists(Server.MapPath("~/Images/User/" + rdr["First_Name"] + "_" + rdr["Last_Name"] + ".jpg")))
                     {
                         profile_pic.ImageUrl = "~/Images/User/" + rdr["First_Name"] + "_" + rdr["Last_Name"] + ".jpg";
                     }
@@ -73,18 +78,8 @@ public partial class User_main : System.Web.UI.Page
                         profile_pic.ImageUrl = "~/Images/User/No_Image_Profile.jpg";
 
                     }
-                    
-                               
-
                 }
-
             }
-
-
         }
-
     }
-
-
-
 }

@@ -19,7 +19,7 @@
                 <asp:ListItem>DaFighter</asp:ListItem>
             </asp:DropDownList>
 
-            <asp:Button ID="User_change" runat="server" Text="Change User" />
+            <asp:Button ID="User_change" runat="server" Text="Change User" OnClick="User_change_Click" />
 
         </div>
 
@@ -47,7 +47,6 @@
  
             
             <asp:Button ID="Button_Friend_List" runat="server" Text="List of Friends" />
-
         </div>
 
 
