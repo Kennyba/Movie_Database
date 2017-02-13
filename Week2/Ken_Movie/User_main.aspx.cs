@@ -13,18 +13,20 @@ public partial class User_main : System.Web.UI.Page
     
     protected void Page_Load(object sender, EventArgs e)
     {
-        Personal_Data();
-        Genre_User_liked();
-        Actor_User_liked();
-        Director_User_liked();
+        int User_Id_Client = Get_user_ID(); 
+        Personal_Data(User_Id_Client);
+        Genre_User_liked(User_Id_Client);
+        Actor_User_liked(User_Id_Client);
+        Director_User_liked(User_Id_Client);
     }
 
     protected void User_change_Click(object sender, EventArgs e)
     {
-        Personal_Data();
-        Genre_User_liked();
-        Actor_User_liked();
-        Director_User_liked();
+        int User_Id_Client = Get_user_ID();
+        Personal_Data(User_Id_Client);
+        Genre_User_liked(User_Id_Client);
+        Actor_User_liked(User_Id_Client);
+        Director_User_liked(User_Id_Client);
     }
 
     private int Get_user_ID()
@@ -54,9 +56,9 @@ public partial class User_main : System.Web.UI.Page
         return User_id;
     }
 
-    private void Personal_Data() {
+    private void Personal_Data(int U_ID) {
 
-        int user_ID = Get_user_ID();
+        int user_ID = U_ID;
         string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
 
         using (SqlConnection con = new SqlConnection(CS))
@@ -89,9 +91,9 @@ public partial class User_main : System.Web.UI.Page
         }
     }
 
-    private void Genre_User_liked()
+    private void Genre_User_liked(int U_ID)
     {
-        int user_ID = Get_user_ID();
+        int user_ID = U_ID;
         string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
 
         BulletedList_GenreLiked.Items.Clear();
@@ -116,9 +118,9 @@ public partial class User_main : System.Web.UI.Page
         }
     }
 
-    private void Actor_User_liked()
+    private void Actor_User_liked(int U_ID)
     {
-        int user_ID = Get_user_ID();
+        int user_ID = U_ID;
         string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
 
         BulletedList_ActorLiked.Items.Clear();
@@ -143,9 +145,9 @@ public partial class User_main : System.Web.UI.Page
         }
     }
 
-    private void Director_User_liked()
+    private void Director_User_liked(int U_ID)
     {
-        int user_ID = Get_user_ID();
+        int user_ID = U_ID;
         string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
 
         BulletedList_DirectorLiked.Items.Clear();
