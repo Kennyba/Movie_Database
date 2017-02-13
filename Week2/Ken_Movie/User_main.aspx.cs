@@ -18,6 +18,9 @@ public partial class User_main : System.Web.UI.Page
         Genre_User_liked(User_Id_Client);
         Actor_User_liked(User_Id_Client);
         Director_User_liked(User_Id_Client);
+        Recommended_Mov_from(User_Id_Client);
+        Movie_Seen(User_Id_Client);
+        Comment_Movie(User_Id_Client);
     }
 
     protected void User_change_Click(object sender, EventArgs e)
@@ -27,6 +30,9 @@ public partial class User_main : System.Web.UI.Page
         Genre_User_liked(User_Id_Client);
         Actor_User_liked(User_Id_Client);
         Director_User_liked(User_Id_Client);
+        Recommended_Mov_from(User_Id_Client);
+        Movie_Seen(User_Id_Client);
+        Comment_Movie(User_Id_Client);
     }
 
     private int Get_user_ID()
@@ -170,5 +176,65 @@ public partial class User_main : System.Web.UI.Page
 
             }
         }
+    }
+
+    private void Recommended_Mov_from(int U_ID)
+    {
+        int user_ID = U_ID;
+        string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
+
+        using (SqlConnection con = new SqlConnection(CS))
+        {
+            SqlCommand cmd = new SqlCommand("Recommended_Movie_From", con);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@user_id", user_ID);
+
+            con.Open();
+
+            GridView_Recommend_movie.DataSource = cmd.ExecuteReader();
+            GridView_Recommend_movie.DataBind();
+
+        }
+
+    }
+
+    private void Movie_Seen(int U_ID)
+    {
+        int user_ID = U_ID;
+        string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
+
+        using (SqlConnection con = new SqlConnection(CS))
+        {
+            SqlCommand cmd = new SqlCommand("spMovie_seen", con);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@user_id", user_ID);
+
+            con.Open();
+
+            GridView_Movie_seen.DataSource = cmd.ExecuteReader();
+            GridView_Movie_seen.DataBind();
+
+        }
+
+    }
+
+    private void Comment_Movie(int U_ID)
+    {
+        int user_ID = U_ID;
+        string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
+
+        using (SqlConnection con = new SqlConnection(CS))
+        {
+            SqlCommand cmd = new SqlCommand("Comment_Client_Movie", con);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@user_id", user_ID);
+
+            con.Open();
+
+            GridView_Comment.DataSource = cmd.ExecuteReader();
+            GridView_Comment.DataBind();
+
+        }
+
     }
 }

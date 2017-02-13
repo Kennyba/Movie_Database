@@ -77,8 +77,12 @@
            <asp:Button ID="Button_Director" runat="server" Text="Modify" />
        </div>
 
+        <br />
+
         <asp:GridView ID="GridView_Recommend_movie" runat="server"></asp:GridView>
+        <br />
         <asp:GridView ID="GridView_Movie_seen" runat="server"></asp:GridView>
+        <br />
         <asp:GridView ID="GridView_Comment" runat="server"></asp:GridView>
     
     </div>
