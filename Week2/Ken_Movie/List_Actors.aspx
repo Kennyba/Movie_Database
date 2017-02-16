@@ -21,10 +21,33 @@
             </ul>
         </div>
 
+        <div id="list_actor">
+            <!-- Following code was taken from this site 
+           http://www.aspsnippets.com/Articles/Bind-Display-images-in-DataList-from-folder-in-ASPNet-using-C-and-VBNet.aspx -->
+            <asp:DataList ID="DataList_Actor" runat="server" RepeatColumns="4" CellPadding="5">
+                <ItemTemplate>
+                    <table>
+                        <tr>
+                            <td>
+                                <asp:Image ID="Image_Actor" ImageUrl='<%# Eval("Value") %>' runat="server" Height="100"
+                                    Width="100" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <%# Eval("Text") %>
+                            </td>
+                        </tr>
 
-        <p>Actor List Under construction</p>
-    
+                    </table>
+                </ItemTemplate>
+
+            </asp:DataList>
+        </div>
+
     </div>
     </form>
+
+
 </body>
 </html>
