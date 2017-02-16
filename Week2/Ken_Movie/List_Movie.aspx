@@ -21,9 +21,19 @@
             </ul>
         </div>
 
+        <div id="list_movie">
+            
+            <asp:GridView runat="server" ID="Movie_List">
 
-        <p>List movie underconstruction</p>
-    
+            </asp:GridView>
+
+            
+        </div>
+
+        
+
+
+  
     </div>
     </form>
 </body>
