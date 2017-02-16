@@ -22,10 +22,28 @@
         </div>
 
         <div id="list_movie">
-            
-            <asp:GridView runat="server" ID="Movie_List">
+            <!-- Following code was taken from this site 
+           http://www.aspsnippets.com/Articles/Bind-Display-images-in-DataList-from-folder-in-ASPNet-using-C-and-VBNet.aspx -->
 
-            </asp:GridView>
+            <asp:DataList ID="DataList_Movie" runat="server" RepeatColumns="4" CellPadding="5">
+                <ItemTemplate>
+                    <table>
+                        <tr>
+                            <td>
+                                <asp:Image ID="Poster_Movie" ImageUrl='<%# Eval("Value") %>' runat="server" Height="100"
+                                    Width="100" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <%# Eval("Text") %>
+                            </td>
+                        </tr>
+
+                    </table>
+                </ItemTemplate>
+
+            </asp:DataList>
 
             
         </div>
