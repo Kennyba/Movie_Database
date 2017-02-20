@@ -29,8 +29,7 @@
                     <table>
                         <tr>
                             <td>
-                                <asp:Image ID="Image_Director" ImageUrl='<%# Eval("Value") %>' runat="server" Height="100"
-                                    Width="100" />
+                                <asp:ImageButton ID="Image_Director" ImageUrl='<%# Eval("Value")%>'  runat="server" Height="100" Width="100" />
                             </td>
                         </tr>
                         <tr>
