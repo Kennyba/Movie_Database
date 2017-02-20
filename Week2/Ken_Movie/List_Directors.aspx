@@ -24,12 +24,12 @@
         <div id="list_actor">
             <!-- Following code was taken from this site 
            http://www.aspsnippets.com/Articles/Bind-Display-images-in-DataList-from-folder-in-ASPNet-using-C-and-VBNet.aspx -->
-            <asp:DataList ID="DataList_Director" runat="server" RepeatColumns="4" CellPadding="5">
+            <asp:DataList ID="DataList_Director" runat="server" RepeatColumns="4" CellPadding="5" OnSelectedIndexChanged="DataList_Director_SelectedIndexChanged">
                 <ItemTemplate>
                     <table>
                         <tr>
                             <td>
-                                <asp:ImageButton ID="Image_Director" ImageUrl='<%# Eval("Value")%>'  runat="server" Height="100" Width="100" />
+                                <asp:ImageButton ID="Image_Director" ImageUrl='<%# Eval("Value")%>' runat="server" Height="100" Width="100" OnClick="Image_Director_Click" />
                             </td>
                         </tr>
                         <tr>

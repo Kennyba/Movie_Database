@@ -28,4 +28,10 @@ public partial class List_Directors : System.Web.UI.Page
         DataList_Director.DataSource = files;
         DataList_Director.DataBind();
     }
+
+
+    protected void Image_Director_Click(object sender, ImageClickEventArgs e)
+    {
+        
+    }
 }
