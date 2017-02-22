@@ -13,8 +13,11 @@ public partial class List_Directors : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Get_Director_Picture();
-
+        if (!IsPostBack)//if I don't put !IspostBack I will get an error why ?
+        {
+            Get_Director_Picture();
+        }
+        
     }
     private void Get_Director_Picture()
     {
@@ -30,8 +33,16 @@ public partial class List_Directors : System.Web.UI.Page
     }
 
 
-    protected void Image_Director_Click(object sender, ImageClickEventArgs e)
+ protected void Director_Image_ItemCommand(object sender, DataListCommandEventArgs e)
     {
-        
+        if(e.CommandName == "Get_Url")
+        {
+            ImageButton btn = e.CommandSource as ImageButton;
+            Test.Text = btn.ImageUrl;
+        }
+
     }
+
+
+
 }
