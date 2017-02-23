@@ -4,14 +4,26 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// Summary description for Global
+/*
+ This class will be used to store all the global variable
+ */
 /// </summary>
-public class Global
+public static class Global
 {
-    public Global()
+    static string _getName;
+
+    /*This propertty will return the name of the movie, actor or director*/
+    public static string GetName
     {
-        //
-        // TODO: Add constructor logic here
-        //
+        get
+        {
+            return _getName;
+        }
+
+        set
+        {
+            _getName = value ;
+        }
+
     }
 }
