@@ -9,6 +9,19 @@
 <body>
     <form id="form1" runat="server">
     <div>
+        
+        <div id="menu">
+            <ul>
+
+                <li><a href="User_main.aspx">Profile</a></li>
+                <li><a href="List_Movie.aspx">Movies</a></li>
+                <li><a href="List_Actors.aspx">Actors</a></li>
+                <li><a href="List_Directors.aspx">Directors</a></li>
+                <li><a href="Info_KenMovie.aspx">Info KenMovie</a></li>
+
+            </ul>
+        </div>
+
         <asp:Image ID="Director_Picture" runat="server" />
         <br />
         <p>Description</p>
