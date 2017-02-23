@@ -12,7 +12,7 @@
         <asp:Image ID="Director_Picture" runat="server" />
         <br />
         <p>Description</p>
-        <asp:BulletedList ID="BulletedList1" runat="server">
+        <asp:BulletedList ID="Director_Description" runat="server">
             <asp:ListItem></asp:ListItem>
             <asp:ListItem></asp:ListItem>
             <asp:ListItem></asp:ListItem>
@@ -20,8 +20,7 @@
         </asp:BulletedList>
         <br />
         <p>Directed Movie(s)</p>
-        <asp:BulletedList ID="Directed Movie" runat="server">
-
+        <asp:BulletedList ID="Directed_Movie" runat="server">
         </asp:BulletedList>
     
     </div>

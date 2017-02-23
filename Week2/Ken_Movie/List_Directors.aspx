@@ -43,7 +43,6 @@
 
             </asp:DataList>
             
-            <asp:Label ID="Test" runat="server" Text="No Image has been pick"></asp:Label>
 
         </div>
 

@@ -32,14 +32,13 @@ public partial class List_Directors : System.Web.UI.Page
         DataList_Director.DataBind();
     }
 
- 
-
  protected void Director_Image_ItemCommand(object sender, DataListCommandEventArgs e)
     {
         if(e.CommandName == "Get_Url")
         {
             ImageButton btn = e.CommandSource as ImageButton;
-            Test.Text = btn.ImageUrl;
+            Global.GetName = btn.ImageUrl;
+            Response.Redirect("Description_Director.aspx");
         }
 
     }
