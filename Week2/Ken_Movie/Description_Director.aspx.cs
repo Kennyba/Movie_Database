@@ -14,7 +14,8 @@ public partial class Description_Director : System.Web.UI.Page
     {
         Get_Director_ID();
         Director_Info();
-
+        Liked_by();
+        List_of_Movies();
     }
 
     private void Get_Director_ID()
@@ -59,14 +60,51 @@ public partial class Description_Director : System.Web.UI.Page
                     Director_Description.Items[3].Text = "Country: " + rdr["Country"];
                     Director_Picture.ImageUrl = Global.GetName;
 
-
                 }
             }
         }
-
-        
-
     }
 
+    private void Liked_by()
+    {
+        string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
+        using (SqlConnection con = new SqlConnection(CS))
+        {
+            SqlCommand cmd = new SqlCommand("spPercentage_Liked_director", con);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@director_ID", Global.GetID);
 
+            con.Open();
+            object objpercentage = cmd.ExecuteScalar();
+            string percentage_liked = Convert.ToString(objpercentage);
+
+            Director_Description.Items[4].Text = "Liked by " + percentage_liked + "% from our users";
+
+
+        }
+
+    }
+    private void List_of_Movies()
+    {
+        Directed_Movie.Items.Clear();
+
+        string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
+        using (SqlConnection con = new SqlConnection(CS))
+        {
+            SqlCommand cmd = new SqlCommand("spdirector_list_of_Movie",con);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@director_ID", Global.GetID);
+
+            con.Open();
+            using (SqlDataReader rdr = cmd.ExecuteReader())
+            {
+                while (rdr.Read())
+                { 
+                    ListItem li = new ListItem();
+                    li.Text = (string)rdr["Movie_title"];
+                    Directed_Movie.Items.Add(li);
+                }
+            }
+        }
+    }
 }
