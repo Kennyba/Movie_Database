@@ -11,6 +11,7 @@ using System.Web;
 public static class Global
 {
     static string _getName;
+    static int _getID;
 
     /*This propertty will return the name of the movie, actor or director*/
     public static string GetName
@@ -25,5 +26,18 @@ public static class Global
             _getName = value ;
         }
 
+    }
+
+    public static int GetID
+    {
+        get
+        {
+            return _getID;
+        }
+
+        set
+        {
+            _getID=value;
+        }
     }
 }
