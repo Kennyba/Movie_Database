@@ -37,7 +37,7 @@ public static class Global
 
         set
         {
-            _getID=value;
+            _getID = value;
         }
     }
 }
