@@ -13,7 +13,11 @@ public partial class List_Actors : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Get_Actor_Picture();
+        if (!IsPostBack)//if I don't put !IspostBack I will get an error why ?
+        {
+            Get_Actor_Picture();
+        }
+            
     }
 
     private void Get_Actor_Picture()
@@ -27,5 +31,15 @@ public partial class List_Actors : System.Web.UI.Page
         }
         DataList_Actor.DataSource = files;
         DataList_Actor.DataBind();
+    }
+
+    protected void DataList_Actor_ItemCommand(object source, DataListCommandEventArgs e)
+    {
+        if (e.CommandName == "Get_Url")
+        {
+            ImageButton btn = e.CommandSource as ImageButton;
+            Global.GetName = btn.ImageUrl;
+            Response.Redirect("Description_Actor.aspx");
+        }
     }
 }
