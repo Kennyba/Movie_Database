@@ -22,7 +22,7 @@ public partial class User_main : System.Web.UI.Page
         Movie_Seen(User_Id_Client);
         Comment_Movie(User_Id_Client);
     }
-
+    /*
     protected void User_change_Click(object sender, EventArgs e)
     {
         int User_Id_Client = Get_user_ID();
@@ -34,11 +34,11 @@ public partial class User_main : System.Web.UI.Page
         Movie_Seen(User_Id_Client);
         Comment_Movie(User_Id_Client);
     }
-
+    */
     private int Get_user_ID()
     {
         int User_id;
-        string username = DropDownList_User.SelectedValue;
+        string username = Convert.ToString(Session["username"]);
         string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
 
         using (SqlConnection con = new SqlConnection(CS))

@@ -10,18 +10,6 @@
     <form id="form1" runat="server">
     <div>
 
-        <div id="option_user">
-            <asp:DropDownList ID="DropDownList_User" runat="server">
-                <asp:ListItem>Ken</asp:ListItem>
-                <asp:ListItem>bob4eva</asp:ListItem>
-                <asp:ListItem>MeltingCh33se</asp:ListItem>
-                <asp:ListItem>Collier</asp:ListItem>
-                <asp:ListItem>DaFighter</asp:ListItem>
-            </asp:DropDownList>
-
-            <asp:Button ID="User_change" runat="server" Text="Change User" OnClick="User_change_Click" />
-
-        </div>
 
         <div id="menu">
             <ul>
