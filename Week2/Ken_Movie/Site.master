@@ -1,0 +1,22 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="Site" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Ken Movie</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        
+        <div>
+            <h1>KenMovie</h1>
+            <p>Welcome</p>
+        </div>
+        <div>
+            <asp:ContentPlaceHolder ID="Content_Body" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

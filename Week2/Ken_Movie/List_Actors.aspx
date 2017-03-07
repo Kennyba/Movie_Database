@@ -1,13 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="List_Actors.aspx.cs" Inherits="List_Actors" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="List_Actors.aspx.cs" Inherits="List_Actors" MasterPageFile="~/Site.master" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
+    <asp:Content ID="myContent" ContentPlaceHolderID="Content_Body" runat="server">
+    
     <div>
         <div id="menu">
             <ul>
@@ -46,8 +40,6 @@
         </div>
 
     </div>
-    </form>
 
+</asp:Content>
 
-</body>
-</html>
