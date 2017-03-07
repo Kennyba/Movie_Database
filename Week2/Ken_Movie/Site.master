@@ -5,13 +5,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Ken Movie</title>
+    <style>
+        #menu{
+            float:left;
+        }
+
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        
+
         <div>
             <h1>KenMovie</h1>
-            <p>Welcome</p>
+            <span id="Welcome_User">Welcome</span>
+        </div>
+        <div id="menu">
+            <ul>
+
+                <li><a href="User_main.aspx">Profile</a></li>
+                <li><a href="List_Movie.aspx">Movies</a></li>
+                <li><a href="List_Actors.aspx">Actors</a></li>
+                <li><a href="List_Directors.aspx">Directors</a></li>
+                <li><a href="Info_KenMovie.aspx">Info KenMovie</a></li>
+
+            </ul>
         </div>
         <div>
             <asp:ContentPlaceHolder ID="Content_Body" runat="server">
