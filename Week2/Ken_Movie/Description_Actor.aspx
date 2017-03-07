@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Description_Actor.aspx.cs" Inherits="Description_Actor" MasterPageFile="~/Site.master" %>
 
-  <asp:Content ID="List_Actor" ContentPlaceHolderID="Content_Body" runat="server">
+  <asp:Content ID="Description_Actor" ContentPlaceHolderID="Content_Body" runat="server">
     <div>
         <asp:Image ID="Actor_Picture" runat="server" />
         <br />
