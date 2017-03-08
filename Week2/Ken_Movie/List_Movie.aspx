@@ -1,26 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="List_Movie.aspx.cs" Inherits="List_Movie" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="List_Movie.aspx.cs" Inherits="List_Movie"  MasterPageFile="~/Site.master" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-        <div id="menu">
-            <ul>
-
-                <li><a href="User_main.aspx">Profile</a></li>
-                <li><a href="List_Movie.aspx">Movies</a></li>
-                <li><a href="List_Actors.aspx">Actors</a></li>
-                <li><a href="List_Directors.aspx">Directors</a></li>
-                <li><a href="Info_KenMovie.aspx">Info KenMovie</a></li>
-
-            </ul>
-        </div>
-
+<asp:Content ID="Description_Movie" ContentPlaceHolderID="Content_Body" runat="server">
         <div id="list_movie">
             <!-- Following code was taken from this site 
            http://www.aspsnippets.com/Articles/Bind-Display-images-in-DataList-from-folder-in-ASPNet-using-C-and-VBNet.aspx -->
@@ -44,15 +24,7 @@
                 </ItemTemplate>
 
             </asp:DataList>
-
-            
+ 
         </div>
+</asp:Content>
 
-        
-
-
-  
-    </div>
-    </form>
-</body>
-</html>
