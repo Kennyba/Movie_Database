@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="List_Movie.aspx.cs" Inherits="List_Movie"  MasterPageFile="~/Site.master" %>
 
-<asp:Content ID="Description_Movie" ContentPlaceHolderID="Content_Body" runat="server">
+<asp:Content ID="List_Movie" ContentPlaceHolderID="Content_Body" runat="server">
         <div id="list_movie">
             <!-- Following code was taken from this site 
            http://www.aspsnippets.com/Articles/Bind-Display-images-in-DataList-from-folder-in-ASPNet-using-C-and-VBNet.aspx -->
