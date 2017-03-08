@@ -8,7 +8,7 @@ using System.Web;
  This class will be used to store all the global variable
  */
 /// </summary>
-public static class Global
+public class Global
 {
     static string _getName;
     static int _getID;

@@ -12,10 +12,14 @@ public partial class Description_Movie : System.Web.UI.Page
         Get_poster();
 
     }
-
     private void Get_poster()
     {
         Movie_Poster.ImageUrl = Global.GetName;
+
+    }
+
+    private void Get_ID()
+    {
 
     }
 }
