@@ -6,20 +6,23 @@
 <head runat="server">
     <title>Ken Movie</title>
     <style>
-        #menu{
-            float:left;
-        }
 
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
 
-        <div>
-            <h1>KenMovie</h1>
+        <div #id="Intro">
+            <h1 #id="Name_Site">KenMovie</h1>
             <span id="Welcome_User">Welcome</span>
         </div>
-        <div id="menu">
+        
+        <div #id="Logout">
+            <asp:Button runat="server" ID="Logout_Button" OnClick="Logout_Button_Click" Text="Logout" />
+        </div>
+        
+   
+        <div id="Menu">
             <ul>
 
                 <li><a href="User_main.aspx">Profile</a></li>
@@ -30,7 +33,7 @@
 
             </ul>
         </div>
-        <div>
+        <div id="Content_Site">
             <asp:ContentPlaceHolder ID="Content_Body" runat="server">
             </asp:ContentPlaceHolder>
         </div>
