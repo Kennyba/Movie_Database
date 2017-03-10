@@ -13,4 +13,13 @@ public partial class Site : System.Web.UI.MasterPage
         Session.Clear();
         Response.Redirect("Login.aspx");
     }
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+            string username = Convert.ToString(Session["username"]);
+            Welcome_User.Text = "Welcome " + username;
+        }
+    }
 }
