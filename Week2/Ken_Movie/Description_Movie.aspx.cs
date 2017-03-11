@@ -23,7 +23,6 @@ public partial class Description_Movie : System.Web.UI.Page
             Get_Genre_Movie();
             Views_Movie();
             Get_Movie_Description();
-
         }
 
     }
@@ -157,7 +156,6 @@ public partial class Description_Movie : System.Web.UI.Page
 
             con.Open();
             views = Convert.ToInt32(cmd.ExecuteScalar());
-
             Number_of_views.Text = "Viewed: " + views;
 
         }
@@ -166,7 +164,18 @@ public partial class Description_Movie : System.Web.UI.Page
     private void Get_Movie_Description()
     {
         string description;
-        
+        string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
+
+        using (SqlConnection con = new SqlConnection(CS))
+        {
+            SqlCommand cmd = new SqlCommand("spDescription_of_Movie", con);
+            cmd.CommandType = cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Movie_ID", Global.GetID);
+
+            con.Open();
+            description = cmd.ExecuteScalar().ToString();
+            Label_Description_Movie.Text = description;
+        }
 
     }
 
