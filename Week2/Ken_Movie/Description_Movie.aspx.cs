@@ -21,7 +21,8 @@ public partial class Description_Movie : System.Web.UI.Page
             Get_Director_Movie();
             Get_Average_Rating();
             Get_Genre_Movie();
-            Views_movie();
+            Views_Movie();
+            Get_Movie_Description();
 
         }
 
@@ -143,7 +144,7 @@ public partial class Description_Movie : System.Web.UI.Page
         }
     }
 
-    private void Views_movie()
+    private void Views_Movie()
     {
         string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
         int views;
@@ -160,6 +161,13 @@ public partial class Description_Movie : System.Web.UI.Page
             Number_of_views.Text = "Viewed: " + views;
 
         }
+    }
+
+    private void Get_Movie_Description()
+    {
+        string description;
+        
+
     }
 
 

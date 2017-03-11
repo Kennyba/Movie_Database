@@ -21,7 +21,8 @@
             <asp:Label ID="Number_of_views" runat="server" Text="Label"></asp:Label>
 
             <p>Description</p>
-            
+
+            <asp:Label ID="Label_Description_Movie" style="word-wrap:break-word;"  Width="500px" runat="server" Text="Label"></asp:Label>
 
         </div>
 
