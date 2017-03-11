@@ -12,11 +12,13 @@ public partial class Description_Movie : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Get_poster();
+        Get_Poster();
         Get_ID();
+        Get_Movie_Title();
+        Get_Director_Movie();
 
     }
-    private void Get_poster()
+    private void Get_Poster()
     {
         Movie_Poster.ImageUrl = Global.GetName;
 
@@ -53,5 +55,27 @@ public partial class Description_Movie : System.Web.UI.Page
 
     }
 
+    private void Get_Movie_Title() /*solution temporaire I will put the path of the image directly in the database*/
+    {
+        string[] mov_dir;
+        string movie_title;
+        mov_dir = Path.GetFileNameWithoutExtension(Global.GetName).Split('_');
+        movie_title = mov_dir[0];
+        Movie_Title.Text = movie_title;
+    }
+
+    private void Get_Director_Movie() /*solution temporaire I will put the path of the image directly in the database*/
+    {
+        string[] mov_dir;
+        string movie_title;
+        mov_dir = Path.GetFileNameWithoutExtension(Global.GetName).Split('_');
+        movie_title = mov_dir[1];
+        Director_Movie.Text = movie_title;
+    }
+
+    private void Get_Average_Rating()
+    {
+
+    }
 
 }

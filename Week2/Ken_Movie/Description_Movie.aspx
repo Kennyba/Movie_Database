@@ -11,7 +11,7 @@
             <asp:BulletedList ID="Actor_in_Movie" runat="server"></asp:BulletedList>
 
             <asp:Label ID="Director_Movie" runat="server" Text="Label"></asp:Label>
-
+            <br />
             <asp:Label ID="Average_Rating" runat="server" Text="Label"></asp:Label>
 
             <p>Genre</p>
