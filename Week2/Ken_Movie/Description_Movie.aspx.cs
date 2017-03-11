@@ -12,11 +12,14 @@ public partial class Description_Movie : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Get_Poster();
-        Get_ID();
-        Get_Movie_Title();
-        Get_Director_Movie();
-        Get_Average_Rating();
+        if (!IsPostBack)
+        {
+            Get_Poster();
+            Get_ID();
+            Get_Movie_Title();
+            Get_Director_Movie();
+            Get_Average_Rating();
+        }
 
     }
     private void Get_Poster()
@@ -27,7 +30,7 @@ public partial class Description_Movie : System.Web.UI.Page
 
     private void Get_ID()
     {
-        string CS= ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
+        string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
         string[] mov_dir;
         string movie_title;
         string movie_director;
@@ -39,7 +42,7 @@ public partial class Description_Movie : System.Web.UI.Page
         using (SqlConnection con = new SqlConnection(CS))
         {
             SqlCommand cmd = new SqlCommand("spGet_movie_ID", con);
-            cmd.CommandType= System.Data.CommandType.StoredProcedure;
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Movie_Title", movie_title);
             cmd.Parameters.AddWithValue("@Director_name", movie_director);
 
@@ -65,13 +68,25 @@ public partial class Description_Movie : System.Web.UI.Page
         Movie_Title.Text = movie_title;
     }
 
+    private void Get_Actor_Movie()
+    {
+        string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
+
+        using (SqlConnection con = new SqlConnection(CS))
+        {
+           SqlCommand cmd = new SqlCommand("")
+
+        }
+
+    }
+
     private void Get_Director_Movie() /*solution temporaire I will put the path of the image directly in the database*/
     {
         string[] mov_dir;
         string movie_director;
         mov_dir = Path.GetFileNameWithoutExtension(Global.GetName).Split('_');
         movie_director = mov_dir[1];
-        Director_Movie.Text = "Director: "+movie_director;
+        Director_Movie.Text = "Director: " + movie_director;
     }
 
     private void Get_Average_Rating()
@@ -81,8 +96,8 @@ public partial class Description_Movie : System.Web.UI.Page
 
         using (SqlConnection con = new SqlConnection(CS))
         {
-            SqlCommand cmd = new SqlCommand("spDistribution_rating",con);
-            cmd.CommandType= System.Data.CommandType.StoredProcedure;
+            SqlCommand cmd = new SqlCommand("spDistribution_rating", con);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Movie_ID", Global.GetID);
 
             con.Open();

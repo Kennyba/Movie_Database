@@ -16,7 +16,7 @@
             <asp:Label ID="Average_Rating" runat="server" Text="Label"></asp:Label>
 
             <p>Genre</p>
-            <asp:BulletedList ID="BulletedList1" runat="server"></asp:BulletedList>
+            <asp:BulletedList ID="Genre_Movie" runat="server"></asp:BulletedList>
 
             <asp:Label ID="Number_of_views" runat="server" Text="Label"></asp:Label>
 
