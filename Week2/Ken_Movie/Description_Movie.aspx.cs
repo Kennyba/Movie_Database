@@ -16,6 +16,7 @@ public partial class Description_Movie : System.Web.UI.Page
         Get_ID();
         Get_Movie_Title();
         Get_Director_Movie();
+        Get_Average_Rating();
 
     }
     private void Get_Poster()
@@ -76,13 +77,18 @@ public partial class Description_Movie : System.Web.UI.Page
     private void Get_Average_Rating()
     {
         string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
+        string Avr_Rating;
 
         using (SqlConnection con = new SqlConnection(CS))
         {
-            SqlCommand cmd = new SqlCommand();
+            SqlCommand cmd = new SqlCommand("spDistribution_rating",con);
+            cmd.CommandType= System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Movie_ID", Global.GetID);
+
+            con.Open();
+            Avr_Rating = Convert.ToString(cmd.ExecuteScalar());
+
+            Average_Rating.Text = "Average Rating: " + Avr_Rating;
         }
-
-
     }
-
 }
