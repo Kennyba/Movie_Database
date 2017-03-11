@@ -21,7 +21,7 @@
             <asp:Label ID="Number_of_views" runat="server" Text="Label"></asp:Label>
 
             <p>Description</p>
-            <asp:TextBox ID="Description_movie" runat="server"></asp:TextBox>
+            
 
         </div>
 

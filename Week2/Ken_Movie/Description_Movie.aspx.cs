@@ -19,9 +19,9 @@ public partial class Description_Movie : System.Web.UI.Page
             Get_Movie_Title();
             Get_Actor_Movie();
             Get_Director_Movie();
-            Get_Average_Rating();/*Problem with Life is beautiful*/
+            Get_Average_Rating();
             Get_Genre_Movie();
-
+            Views_movie();
 
         }
 
@@ -92,11 +92,8 @@ public partial class Description_Movie : System.Web.UI.Page
                     Actor_in_Movie.Items.Add(li);
                 }
             }
-
         }
-
     }
-
     private void Get_Director_Movie() /*solution temporaire I will put the path of the image directly in the database*/
     {
         string[] mov_dir;
@@ -123,7 +120,6 @@ public partial class Description_Movie : System.Web.UI.Page
             Average_Rating.Text = "Average Rating: " + Avr_Rating;
         }
     }
-
     private void Get_Genre_Movie()
     {
         string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
@@ -131,7 +127,7 @@ public partial class Description_Movie : System.Web.UI.Page
         using (SqlConnection con = new SqlConnection(CS))
         {
             SqlCommand cmd = new SqlCommand("spGenre_of_Movies", con);
-            cmd.CommandType = cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Movie_ID", Global.GetID);
 
             con.Open();
@@ -144,9 +140,28 @@ public partial class Description_Movie : System.Web.UI.Page
                     Genre_Movie.Items.Add(li);
                 }
             }
+        }
+    }
+
+    private void Views_movie()
+    {
+        string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
+        int views;
+
+        using (SqlConnection con = new SqlConnection(CS))
+        {
+            SqlCommand cmd = new SqlCommand("spViews_Movie", con);
+            cmd.CommandType= cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Movie_ID", Global.GetID);
+
+            con.Open();
+            views = Convert.ToInt32(cmd.ExecuteScalar());
+
+            Number_of_views.Text = "Viewed: " + views;
 
         }
-
     }
+
+
 }
 
