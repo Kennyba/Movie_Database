@@ -17,8 +17,12 @@ public partial class Description_Movie : System.Web.UI.Page
             Get_Poster();
             Get_ID();
             Get_Movie_Title();
+            Get_Actor_Movie();
             Get_Director_Movie();
-            Get_Average_Rating();
+            Get_Average_Rating();/*Problem with Life is beautiful*/
+            Get_Genre_Movie();
+
+
         }
 
     }
@@ -74,7 +78,20 @@ public partial class Description_Movie : System.Web.UI.Page
 
         using (SqlConnection con = new SqlConnection(CS))
         {
-           SqlCommand cmd = new SqlCommand("")
+            SqlCommand cmd = new SqlCommand("spActor_in_movie",con);
+            cmd.CommandType= cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Movie_ID", Global.GetID);
+
+            con.Open();
+            using (SqlDataReader rdr= cmd.ExecuteReader())
+            {
+                while(rdr.Read())
+                {
+                    ListItem li = new ListItem();
+                    li.Text = (string)rdr["First_Name"]+" "+ (string)rdr["Last_Name"];
+                    Actor_in_Movie.Items.Add(li);
+                }
+            }
 
         }
 
@@ -96,14 +113,40 @@ public partial class Description_Movie : System.Web.UI.Page
 
         using (SqlConnection con = new SqlConnection(CS))
         {
-            SqlCommand cmd = new SqlCommand("spDistribution_rating", con);
+            SqlCommand cmd = new SqlCommand("spRating_Movie", con);
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Movie_ID", Global.GetID);
 
             con.Open();
-            Avr_Rating = Convert.ToString(cmd.ExecuteScalar());
+            Avr_Rating = cmd.ExecuteScalar().ToString();
 
             Average_Rating.Text = "Average Rating: " + Avr_Rating;
         }
     }
+
+    private void Get_Genre_Movie()
+    {
+        string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
+
+        using (SqlConnection con = new SqlConnection(CS))
+        {
+            SqlCommand cmd = new SqlCommand("spGenre_of_Movies", con);
+            cmd.CommandType = cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Movie_ID", Global.GetID);
+
+            con.Open();
+            using (SqlDataReader rdr = cmd.ExecuteReader())
+            {
+                while (rdr.Read())
+                {
+                    ListItem li = new ListItem();
+                    li.Text = (string)rdr["Genre"];
+                    Genre_Movie.Items.Add(li);
+                }
+            }
+
+        }
+
+    }
 }
+
