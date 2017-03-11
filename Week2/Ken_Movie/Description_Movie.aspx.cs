@@ -67,14 +67,21 @@ public partial class Description_Movie : System.Web.UI.Page
     private void Get_Director_Movie() /*solution temporaire I will put the path of the image directly in the database*/
     {
         string[] mov_dir;
-        string movie_title;
+        string movie_director;
         mov_dir = Path.GetFileNameWithoutExtension(Global.GetName).Split('_');
-        movie_title = mov_dir[1];
-        Director_Movie.Text = movie_title;
+        movie_director = mov_dir[1];
+        Director_Movie.Text = "Director: "+movie_director;
     }
 
     private void Get_Average_Rating()
     {
+        string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
+
+        using (SqlConnection con = new SqlConnection(CS))
+        {
+            SqlCommand cmd = new SqlCommand();
+        }
+
 
     }
 

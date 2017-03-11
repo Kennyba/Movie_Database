@@ -12,6 +12,7 @@
 
             <asp:Label ID="Director_Movie" runat="server" Text="Label"></asp:Label>
             <br />
+            <br />
             <asp:Label ID="Average_Rating" runat="server" Text="Label"></asp:Label>
 
             <p>Genre</p>
