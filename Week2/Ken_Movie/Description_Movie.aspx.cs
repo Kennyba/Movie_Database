@@ -25,6 +25,8 @@ public partial class Description_Movie : System.Web.UI.Page
             Views_Movie();
             Get_Movie_Description();
             Get_Distribution_Rating();
+            Get_Comments_Movie();
+
         }
 
     }

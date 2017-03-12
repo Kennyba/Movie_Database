@@ -36,7 +36,7 @@
 
     <div id="Comments">
         <p>Comment Section</p>
-        <asp:label id="No_Comments" runat="server" text="Label"></asp:label>
+        <asp:label id="No_Comments" runat="server" text=""></asp:label>
         <asp:gridview runat="server" id="Comments_Movies"></asp:gridview>
     </div>
 </asp:Content>
