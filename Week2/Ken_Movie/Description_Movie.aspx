@@ -21,7 +21,7 @@
 
         <asp:label id="Number_of_views" runat="server" text="Label"></asp:label>
 
-        <p>Description</p>
+        <p>Description of the movie</p>
 
         <asp:label id="Label_Description_Movie" style="word-wrap: break-word;" width="500px" runat="server" text="Label"></asp:label>
 
@@ -32,8 +32,11 @@
         <p>Distribution of the rating </p>
         <asp:gridview runat="server" id="GridView_Rating_distribution"></asp:gridview>
     </div>
+    <br />
 
     <div id="Comments">
+        <p>Comment Section</p>
+        <asp:label id="No_Comments" runat="server" text="Label"></asp:label>
         <asp:gridview runat="server" id="Comments_Movies"></asp:gridview>
     </div>
 </asp:Content>
