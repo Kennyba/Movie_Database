@@ -202,7 +202,7 @@ public partial class Description_Movie : System.Web.UI.Page
                 {
                     DataRow dataR = table.NewRow();
 
-                    if (rdr["rating"] == null)
+                    if (rdr["rating"]==DBNull.Value) //Check if there's a null in the row
                     {
                         dataR["Rating"] = "No Star assigned";
                     }
