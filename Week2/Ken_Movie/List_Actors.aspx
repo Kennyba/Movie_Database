@@ -1,6 +1,11 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="List_Actors.aspx.cs" Inherits="List_Actors" MasterPageFile="~/Site.master" %>
 
     <asp:Content ID="List_Actor" ContentPlaceHolderID="Content_Body" runat="server">
+<%--        This Datalist will give a list of image separated on 4 columns.
+        Each item of the datalist is table of 2 rows.
+        The first row is the image of the actor.
+        The second row the name of the actor.
+        --%>
         <div id="list_actor">
             <!-- Following code was taken from this site 
            http://www.aspsnippets.com/Articles/Bind-Display-images-in-DataList-from-folder-in-ASPNet-using-C-and-VBNet.aspx -->

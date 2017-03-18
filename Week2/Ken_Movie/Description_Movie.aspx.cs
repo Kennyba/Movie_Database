@@ -15,24 +15,24 @@ public partial class Description_Movie : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            Get_Poster();
-            Get_ID();
-            Get_Movie_Title();
-            Get_Actor_Movie();
-            Get_Director_Movie();
-            Get_Average_Rating();
-            Get_Genre_Movie();
-            Views_Movie();
-            Get_Movie_Description();
-            Get_Distribution_Rating();
-            Get_Comments_Movie();
+            Get_Poster(); /*Get the poster of the movie*/
+            Get_ID(); /*Get the id of the movie in the database*/
+            Get_Movie_Title(); /*Get the movie title*/
+            Get_Actor_Movie();/*get the actor that plays in the movie*/
+            Get_Director_Movie();/*get the director of the movie*/
+            Get_Average_Rating();/*get the average rating of the movie*/
+            Get_Genre_Movie();/*get the genre of the movie*/
+            Views_Movie();/*get the number of views*/
+            Get_Movie_Description(); /*Description of the movie*/
+            Get_Distribution_Rating();/*Distribution of the rating*/
+            Get_Comments_Movie();/*comment for the movie made by the user*/
 
         }
 
     }
     private void Get_Poster()
     {
-        Movie_Poster.ImageUrl = Global.GetName;
+        Movie_Poster.ImageUrl = Global.GetName;/*getting the url of the image. It is given in the page List_Movie*/
 
     }
 
@@ -43,19 +43,19 @@ public partial class Description_Movie : System.Web.UI.Page
         string movie_title;
         string movie_director;
 
-        mov_dir = Path.GetFileNameWithoutExtension(Global.GetName).Split('_');
-        movie_title = mov_dir[0];
-        movie_director = mov_dir[1];
+        mov_dir = Path.GetFileNameWithoutExtension(Global.GetName).Split('_');/*In the name of the image we have the movie title and the director of the movie (BAD)*/
+        movie_title = mov_dir[0];/*movie title*/
+        movie_director = mov_dir[1];/*director of the movie*/
 
         using (SqlConnection con = new SqlConnection(CS))
         {
-            SqlCommand cmd = new SqlCommand("spGet_movie_ID", con);
+            SqlCommand cmd = new SqlCommand("spGet_movie_ID", con);/*procedure used to get the movie id*/
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Movie_Title", movie_title);
             cmd.Parameters.AddWithValue("@Director_name", movie_director);
 
             con.Open();
-            using (SqlDataReader rdr = cmd.ExecuteReader())
+            using (SqlDataReader rdr = cmd.ExecuteReader())/*I should use execute scalar*/
             {
                 while (rdr.Read())
                 {
@@ -73,7 +73,7 @@ public partial class Description_Movie : System.Web.UI.Page
         string movie_title;
         mov_dir = Path.GetFileNameWithoutExtension(Global.GetName).Split('_');
         movie_title = mov_dir[0];
-        Movie_Title.Text = movie_title;
+        Movie_Title.Text = movie_title;/*getting the movie title*/
     }
 
     private void Get_Actor_Movie()
@@ -82,7 +82,7 @@ public partial class Description_Movie : System.Web.UI.Page
 
         using (SqlConnection con = new SqlConnection(CS))
         {
-            SqlCommand cmd = new SqlCommand("spActor_in_movie", con);
+            SqlCommand cmd = new SqlCommand("spActor_in_movie", con);/* procedure that gives the actor in the movie*/
             cmd.CommandType = cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Movie_ID", Global.GetID);
 
@@ -103,7 +103,7 @@ public partial class Description_Movie : System.Web.UI.Page
         string[] mov_dir;
         string movie_director;
         mov_dir = Path.GetFileNameWithoutExtension(Global.GetName).Split('_');
-        movie_director = mov_dir[1];
+        movie_director = mov_dir[1];/*director of the movie*/
         Director_Movie.Text = "Director: " + movie_director;
     }
 
@@ -114,7 +114,7 @@ public partial class Description_Movie : System.Web.UI.Page
 
         using (SqlConnection con = new SqlConnection(CS))
         {
-            SqlCommand cmd = new SqlCommand("spRating_Movie", con);
+            SqlCommand cmd = new SqlCommand("spRating_Movie", con);/*procedure that gives the average rating*/
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Movie_ID", Global.GetID);
 
@@ -130,7 +130,7 @@ public partial class Description_Movie : System.Web.UI.Page
 
         using (SqlConnection con = new SqlConnection(CS))
         {
-            SqlCommand cmd = new SqlCommand("spGenre_of_Movies", con);
+            SqlCommand cmd = new SqlCommand("spGenre_of_Movies", con);/* getting the genre(s) of the movie*/
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Movie_ID", Global.GetID);
 
@@ -154,7 +154,7 @@ public partial class Description_Movie : System.Web.UI.Page
 
         using (SqlConnection con = new SqlConnection(CS))
         {
-            SqlCommand cmd = new SqlCommand("spViews_Movie", con);
+            SqlCommand cmd = new SqlCommand("spViews_Movie", con);/* procedure that gives the number of views*/
             cmd.CommandType = cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Movie_ID", Global.GetID);
 
@@ -172,7 +172,7 @@ public partial class Description_Movie : System.Web.UI.Page
 
         using (SqlConnection con = new SqlConnection(CS))
         {
-            SqlCommand cmd = new SqlCommand("spDescription_of_Movie", con);
+            SqlCommand cmd = new SqlCommand("spDescription_of_Movie", con); /*Description of the movie*/
             cmd.CommandType = cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Movie_ID", Global.GetID);
 
@@ -189,7 +189,7 @@ public partial class Description_Movie : System.Web.UI.Page
 
         using (SqlConnection con = new SqlConnection(CS))
         {
-            SqlCommand cmd = new SqlCommand("spDistribution_rating", con);
+            SqlCommand cmd = new SqlCommand("spDistribution_rating", con);/*procedure that gives the distribution of the rating*/
             cmd.CommandType = cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Movie_ID", Global.GetID);
 
@@ -213,7 +213,7 @@ public partial class Description_Movie : System.Web.UI.Page
                         dataR["Rating"] = rdr["rating"];
                     }
 
-                    dataR["Distribution of the rating"] = rdr["Percentage movie distribution"];
+                    dataR["Distribution of the rating"] = rdr["Percentage movie distribution"]+"%";
 
                     table.Rows.Add(dataR);
                 }
@@ -242,7 +242,7 @@ public partial class Description_Movie : System.Web.UI.Page
             con.Open();
             using (SqlDataReader rdr = cmd.ExecuteReader())
             {
-                if (rdr.HasRows)
+                if (rdr.HasRows)//check if it has rows in the rdr. if there's no row that means there's no comments for the movie
                 {
                     while (rdr.Read())
                     {

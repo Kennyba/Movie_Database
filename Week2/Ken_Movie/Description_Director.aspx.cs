@@ -12,27 +12,31 @@ public partial class Description_Director : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Get_Director_ID();
-        Director_Info();
-        Liked_by();
-        List_of_Movies();
+        if (!IsPostBack)
+        {
+            Get_Director_ID(); /*Get the id of the director in the database*/
+            Director_Info(); /*using the director id to get the information about the director*/
+            Liked_by(); /*give the percentage of the user that likes the director*/
+            List_of_Movies(); /*give the list in which the director directed*/
+        }
+
     }
 
     private void Get_Director_ID()
     {
         string name_director;
-        name_director = Path.GetFileNameWithoutExtension(Global.GetName);
+        name_director = Path.GetFileNameWithoutExtension(Global.GetName); /*The name of the director is in the title of the image*/
         string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
         
         using (SqlConnection con = new SqlConnection(CS))
         {
-            SqlCommand cmd = new SqlCommand("spGet_Director_ID", con);
+            SqlCommand cmd = new SqlCommand("spGet_Director_ID", con); /*procedure that gives the id of the director*/
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@name", name_director);
 
             con.Open();
             object id_director =cmd.ExecuteScalar();
-            Global.GetID = Convert.ToInt32(id_director);
+            Global.GetID = Convert.ToInt32(id_director); /*Getting the id and put it in the property Global.GetID*/
         }
 
 
@@ -44,14 +48,14 @@ public partial class Description_Director : System.Web.UI.Page
 
         using (SqlConnection con = new SqlConnection(CS))
         {
-            SqlCommand cmd = new SqlCommand("spPersonnal_info_director", con);
+            SqlCommand cmd = new SqlCommand("spPersonnal_info_director", con); /*procedure that gives the personnal info of the director*/
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@director_ID", Global.GetID);
 
             con.Open();
             using (SqlDataReader rdr = cmd.ExecuteReader())
             {
-                while (rdr.Read())
+                while (rdr.Read())/*the procedure will give a table with one row. This row have a column for the name, sex, date of birth and the country of birth*/
                 {
 
                     Director_Description.Items[0].Text = "Name: " + rdr["Name"];
@@ -70,7 +74,7 @@ public partial class Description_Director : System.Web.UI.Page
         string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
         using (SqlConnection con = new SqlConnection(CS))
         {
-            SqlCommand cmd = new SqlCommand("spPercentage_Liked_director", con);
+            SqlCommand cmd = new SqlCommand("spPercentage_Liked_director", con); /*procedure that give the %  user that like the director*/
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@director_ID", Global.GetID);
 
@@ -91,7 +95,7 @@ public partial class Description_Director : System.Web.UI.Page
         string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
         using (SqlConnection con = new SqlConnection(CS))
         {
-            SqlCommand cmd = new SqlCommand("spdirector_list_of_Movie",con);
+            SqlCommand cmd = new SqlCommand("spdirector_list_of_Movie",con); /*List of movie that is Directed by the director*/
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@director_ID", Global.GetID);
 

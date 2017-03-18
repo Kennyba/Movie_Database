@@ -2,11 +2,11 @@
 
 <script runat="server">
 
-    void Application_Start(object sender, EventArgs e)
+    void Application_Start(object sender, EventArgs e) //This part is used for the login
     {
         ScriptManager.ScriptResourceMapping.AddDefinition("jquery", new ScriptResourceDefinition {
 
-            Path="~/Script/jquery-3.1.1.js"
+            Path="~/Script/jquery-3.1.1.js" 
 
         });
 
