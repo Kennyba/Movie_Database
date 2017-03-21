@@ -2,9 +2,11 @@
 
 <!DOCTYPE html>
 
+<%--This is the login page. I used an ASP controller--%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <%--I needed the jquery script to make work the login page--%>
     <script src="Script/jquery-3.1.1.js"></script>
 </head>
 <body>

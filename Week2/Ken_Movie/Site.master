@@ -1,5 +1,12 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="Site" %>
 
+<%--This is the master page. It will appear on every page of the website.
+Here what we got on the master page.
+1. The title of the website
+2. Welcome+the user name
+3. Logout Button
+4. Menu of the website
+5. The body of the website, the different section will appear there--%>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -29,7 +36,7 @@
                 <li><a href="List_Movie.aspx">Movies</a></li>
                 <li><a href="List_Actors.aspx">Actors</a></li>
                 <li><a href="List_Directors.aspx">Directors</a></li>
-                <li><a href="Info_KenMovie.aspx">Info KenMovie</a></li>
+
 
             </ul>
         </div>

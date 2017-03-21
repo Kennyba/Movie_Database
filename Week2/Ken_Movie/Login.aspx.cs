@@ -14,7 +14,7 @@ public partial class Login : System.Web.UI.Page
 
     }
 
-    private bool UserLogin(string un, string pw)
+    private bool UserLogin(string un, string pw) //function that will verufy if I have the user in my database
     {
         string CS = ConfigurationManager.ConnectionStrings["Movie_Database"].ConnectionString;
         using (SqlConnection con = new SqlConnection(CS))
@@ -44,7 +44,7 @@ public partial class Login : System.Web.UI.Page
 
         if (result)
         {
-            e.Authenticated = true;
+            e.Authenticated = true;//If the user is in the daabase, it will bring him on the user_main page
             Session["username"] = un;
         }
         else
