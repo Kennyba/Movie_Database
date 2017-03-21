@@ -13,28 +13,16 @@ public partial class User_main : System.Web.UI.Page
     
     protected void Page_Load(object sender, EventArgs e)
     {
-        int User_Id_Client = Get_user_ID(); 
-        Personal_Data(User_Id_Client);
-        Genre_User_liked(User_Id_Client);
-        Actor_User_liked(User_Id_Client);
-        Director_User_liked(User_Id_Client);
-        Recommended_Mov_from(User_Id_Client);
-        Movie_Seen(User_Id_Client);
-        Comment_Movie(User_Id_Client);
+        int User_Id_Client = Get_user_ID();//Getting the user ID
+        Personal_Data(User_Id_Client);//Function that will give the name, sex and date of birth of the user
+        Genre_User_liked(User_Id_Client);//Function that will give the genre of movie that the user like
+        Actor_User_liked(User_Id_Client);//Function that will give the actors that the user like
+        Director_User_liked(User_Id_Client);//Function that will give the directors that the user like
+        Recommended_Mov_from(User_Id_Client);//Function that give the list of movie that was recommended for the user
+        Movie_Seen(User_Id_Client);//Function that the list of movies that have been seen by the user
+        Comment_Movie(User_Id_Client);//Function that gives the comments that the user have made
     }
-    /*
-    protected void User_change_Click(object sender, EventArgs e)
-    {
-        int User_Id_Client = Get_user_ID();
-        Personal_Data(User_Id_Client);
-        Genre_User_liked(User_Id_Client);
-        Actor_User_liked(User_Id_Client);
-        Director_User_liked(User_Id_Client);
-        Recommended_Mov_from(User_Id_Client);
-        Movie_Seen(User_Id_Client);
-        Comment_Movie(User_Id_Client);
-    }
-    */
+
     private int Get_user_ID()
     {
         int User_id;
@@ -44,6 +32,10 @@ public partial class User_main : System.Web.UI.Page
         using (SqlConnection con = new SqlConnection(CS))
         {
             SqlCommand cmd = new SqlCommand("Get_Client_ID", con);
+            /*(Not a good way, not sure): this procedure will give the ID of the user.
+             * I put the user ID in a output parameter
+             * I could simply do a procedure that give only the user ID and do after
+             * an ExecuterScalar*/
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@username", username);
 
@@ -76,14 +68,14 @@ public partial class User_main : System.Web.UI.Page
             con.Open();
             using (SqlDataReader rdr = cmd.ExecuteReader())
             {
-                while (rdr.Read())
+                while (rdr.Read())//rdr will only have one line with the column First_Name, Last_Name, Sex and Date_Birth
                 {
 
                     Profile_Info.Items[0].Text = "Name: " + rdr["First_Name"] + " " + rdr["Last_Name"];
                     Profile_Info.Items[1].Text = "Sex: " + rdr["Sex"];
                     Profile_Info.Items[2].Text = "Date of Birth: " + rdr["Date_Birth"];
 
-                    if (File.Exists(Server.MapPath("~/Images/User/" + rdr["First_Name"] + "_" + rdr["Last_Name"] + ".jpg")))
+                    if (File.Exists(Server.MapPath("~/Images/User/" + rdr["First_Name"] + "_" + rdr["Last_Name"] + ".jpg")))//Condition that will verify if the user has a picture
                     {
                         profile_pic.ImageUrl = "~/Images/User/" + rdr["First_Name"] + "_" + rdr["Last_Name"] + ".jpg";
                     }
